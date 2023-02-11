@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Website Title -->
+  <title>Count On Me - Piano</title>
+  <link rel="icon" href="images/hand_heart.png">
+
+  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/fontawesome-all.css" rel="stylesheet">
+  <link href="css/swiper.css" rel="stylesheet">
+  <link href="css/magnific-popup.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/piano.css" rel="stylesheet">
+
+
+
+  <!-- Favicon  -->
+
+</head>
+
+<body data-spy="scroll" data-target=".fixed-top">
+
+  <!-- Preloader -->
+  <!-- <div class="spinner-wrapper">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div> -->
+
+  <!-- end of preloader -->
+  <div id="nav-placeholder"></div>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      const nav = sessionStorage.getItem('navbar');
+      if (nav == null) {
+        $("#nav-placeholder").load("navbar.html");
+      }
+      else {
+        $("#nav-placeholder").load(nav);
+      }
+
+    });
+  </script>
+
+  <br><br><br>
+
+  <section id="wrap">
+    <header>
+      <h3 class="text-center explanation">Use your keyboard. Hover for hints.</h3>
+    </header>
+    <section id="main">
+      <div class="row col-sm-6 mx-auto">
+        <div class="col-4 nowplaying text-center"></div>
+        <div class="col-8 playingHistory overflow-auto mx-auto"></div>
+      </div>
+
+      <div class="row container-fluid justify-content-center p-0 m-0">
+        <button class=" btn btn-primary mx-2" onclick="playHistory()">Play History</button>
+        <button class="btn btn-danger mx-2" onclick="clearHistory()">Clear History</button>
+        <button class="btn btn-success mx-2" onclick="saveHistory()">Save History</button>
+      </div>
+      <div class="keys">
+        <div data-key="65" class="key" data-note="C">
+          <span class="hints">A</span>
+        </div>
+        <div data-key="87" class="key sharp" data-note="C#">
+          <span class="hints">W</span>
+        </div>
+        <div data-key="83" class="key" data-note="D">
+          <span class="hints">S</span>
+        </div>
+        <div data-key="69" class="key sharp" data-note="D#">
+          <span class="hints">E</span>
+        </div>
+        <div data-key="68" class="key" data-note="E">
+          <span class="hints">D</span>
+        </div>
+        <div data-key="70" class="key" data-note="F">
+          <span class="hints">F</span>
+        </div>
+        <div data-key="84" class="key sharp" data-note="F#">
+          <span class="hints">T</span>
+        </div>
+        <div data-key="71" class="key" data-note="G">
+          <span class="hints">G</span>
+        </div>
+        <div data-key="89" class="key sharp" data-note="G#">
+          <span class="hints">Y</span>
+        </div>
+        <div data-key="72" class="key" data-note="A">
+          <span class="hints">H</span>
+        </div>
+        <div data-key="85" class="key sharp" data-note="A#">
+          <span class="hints">U</span>
+        </div>
+        <div data-key="74" class="key" data-note="B">
+          <span class="hints">J</span>
+        </div>
+        <div data-key="75" class="key" data-note="C">
+          <span class="hints">K</span>
+        </div>
+        <div data-key="79" class="key sharp" data-note="C#">
+          <span class="hints">O</span>
+        </div>
+        <div data-key="76" class="key" data-note="D">
+          <span class="hints">L</span>
+        </div>
+        <div data-key="80" class="key sharp" data-note="D#">
+          <span class="hints">P</span>
+        </div>
+        <div data-key="186" class="key" data-note="E">
+          <span class="hints">;</span>
+        </div>
+      </div>
+
+      <audio data-key="65" src="audio/C.wav"></audio>
+      <audio data-key="87" src="audio/Csharp.wav"></audio>
+      <audio data-key="83" src="audio/D.wav"></audio>
+      <audio data-key="69" src="audio/Dsharp.wav"></audio>
+      <audio data-key="68" src="audio/E.wav"></audio>
+      <audio data-key="70" src="audio/F.wav"></audio>
+      <audio data-key="84" src="audio/Fsharp.wav"></audio>
+      <audio data-key="71" src="audio/G.wav"></audio>
+      <audio data-key="89" src="audio/Gsharp.wav"></audio>
+      <audio data-key="72" src="audio/A.wav"></audio>
+      <audio data-key="85" src="audio/Asharp.wav"></audio>
+      <audio data-key="74" src="audio/B.wav"></audio>
+      <audio data-key="75" src="audio/C2.wav"></audio>
+      <audio data-key="79" src="audio/C2sharp.wav"></audio>
+      <audio data-key="76" src="audio/D2.wav"></audio>
+      <audio data-key="80" src="audio/D2sharp.wav"></audio>
+      <audio data-key="186" src="audio/E2.wav"></audio>
+    </section>
+  </section>
+  <div class="container-fluid pt-3">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row justify-content-center">
+          <h3>Your Saved Music</h3>
+        </div>
+        <div class="justify-content-center" id="savedMusicList">
+          <div class="row d-flex justify-content-center">
+            <div class="spinner-border" role="status"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row justify-content-center">
+          <h3>Suggested Music</h3>
+        </div>
+        <div class="justify-content-center" id="suggestedMusicList">
+          <div class="row d-flex justify-content-center">
+            <div class="spinner-border" role="status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Scripts -->
+  <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+  <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+  <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+  <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+  <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+  <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+  <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+  <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+  <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+  <script src="js/scripts.js"></script> <!-- Custom scripts -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+  <!-- Don't change the format for any other products. -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+  <script src="js/database.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/piano.js"></script>
+</body>
+
+</html>

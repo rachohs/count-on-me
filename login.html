@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Bundled Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
+
+    <!-- Website Title -->
+    <title>Count on Me - Login</title>
+    <link rel="icon" href="images/hand_heart.png">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/signup_login.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	<link href="css/magnific-popup.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script> <!-- jquery -->
+	
+	<!-- Favicon  -->
+    </head>
+    <body data-spy="scroll" data-target=".fixed-top">
+        
+    <!-- Preloader -->
+	<!-- <div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div> -->
+    <!-- end of preloader -->
+    
+     <!-- navbar -->
+     <div id="nav-placeholder"></div>
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+     <script>
+         $(function(){
+             const nav = sessionStorage.getItem('navbar');
+             console.log(nav);
+             
+             if(nav == null){
+                 $("#nav-placeholder").load("navbar.html");
+             }
+             else{
+                 $("#nav-placeholder").load("loginNavBar.html");
+             }
+            
+         });
+     </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="signup-container">
+
+                            <div class="main">
+                                <!-- Sing in  Form -->
+                                <section class="sign-in">
+                                    <div class="container">
+                                        <div class="signin-content">
+                                            <div class="signin-image">
+                                                <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
+                                                <a href="signup.html" class="signup-image-link">Create an account</a>
+                                            </div>
+
+                                            <div class="signin-form pt-5 text-left">
+                                                <h2 class="form-title">Sign In</h2>
+                                                <form method="POST" class="register-form" id="login-form">
+                                                    <div class="form-group">
+                                                        <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                                        <input type="email" name="email" id="email" placeholder="Your Email"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                                        <input type="password" name="pass" id="pass" placeholder="Password"/>
+                                                        
+                                                    </div>
+
+                                                    <!-- <div>
+                                                        <span>
+                                                            <a href="#" class="forget_pw">Forget Password?</a>
+                                                        </span>
+                                                    </div> -->
+                                                    
+                                                    <div class="form-group">
+                                                        <!-- <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                                        <label for="remember-me" class="label-agree-term" style="font-size: x-small;"><span><span></span></span>Remember me</label> -->
+                                                        <span id="message"></span>
+                                                    </div>
+                                                    <div class="form-group form-button">
+                                                        <!-- <a href="index.html">
+                                                            <input type="submit" name="signin" id="signin" class="form-submit" 
+                                                            value="Log in" />
+                                                        </a> -->
+
+                                                        <form action="index.html">
+                                                            <input type="submit" name="signin" id="signin" class="form-submit" 
+                                                            value="Log in" />
+                                                        </form>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                            </div>
+                        </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="js/bootstrap.min.js"></script> 
+    <!--Bootstrap framework -->
+    
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+    <!-- Don't change the format for any other products. -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/login.js"></script>          
+      
+
+</body>
+</html>
+
+<script>
+
+
+    
+</script>
+
+

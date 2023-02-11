@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>Count On Me - Diary Entry</title>
+    <link rel="icon" href="images/hand_heart.png">
+</head>
+   
+    <!-- Diary -->
+    <body data-spy="scroll" data-target=".fixed-top">
+
+   <!-- navbar -->
+   <div id="nav-placeholder"></div>
+   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+   <script>
+     $(function(){
+       const nav = sessionStorage.getItem('navbar');
+       if(nav == null){
+           $("#nav-placeholder").load("navbar.html");
+       }
+       else{
+           $("#nav-placeholder").load(nav);
+       }
+       
+   });
+   </script>
+
+    <br>
+    <div id="diarySuccess" class="filter">
+		<div class="container">
+        <div style="background-color:white;padding:25px;">
+            <div class="row">
+                <img class="img-responsive mx-auto" style="max-width:200px;min-width:200px" src="https://cdn2.iconfinder.com/data/icons/greenline/512/check-512.png">
+            </div>
+            <div class="row">
+                <span class="mx-auto" id="entryText"></span>
+            </div>
+            <div class="row">
+                <a class="mx-auto" style="color:blue;" href="diaryStats.html">View Your Diary</a> 
+            </div>
+            <br><br>
+            <div class="vstack gap-2 col-md-5 mx-auto">
+                We also recommend you to... 
+                <div id="spotify_btn" class="col-md col-sm-12 d-flex justify-content-center pt-4" >
+                    <a href='spotify.html'>
+                        <img width="500px" style="border-radius: 10px;" src="images/spotify_btnn.png">
+                    </a>
+                </div>
+                <div id="podcast_btn" class="col-md col-sm-12 d-flex justify-content-center pt-4">
+                    <a href='podcast.html'>
+                        <img width="500px" style="border-radius: 10px;" src="images/spotify_pcc.png">
+                    </a>
+                </div>
+                
+                
+            </div>
+          </div>
+        </form>
+    </div>
+    </div>
+    </body>
+    </html>
+
+<!-- Script -->
+<script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+<script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+<script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+<script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="js/scripts.js"></script> <!-- Custom scripts -->
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="js/database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script>
+const uid = sessionStorage.getItem('uid');
+if(uid == null){
+    window.location.href = "index.html"; 
+}
+date = localStorage.getItem("dateField");
+if(date == null){
+    $('#entryText').text(''); 
+}
+else{
+    diaryText = "Diary Entry for " + date + " has been successfully added"
+    $('#entryText').text(diaryText); 
+    window.localStorage.removeItem('dateField');
+}
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="js/database.js"></script>
+<script src="js/login.js"></script>  

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Website Title -->
+    <title>Count On Me - Diary Entry</title>
+    <link rel="icon" href="images/hand_heart.png">
+
+</head>
+   
+    <!-- Diary -->
+    <body data-spy="scroll" data-target=".fixed-top">
+    <!-- navbar -->
+    <div id="nav-placeholder"></div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+      $(function(){
+        const nav = sessionStorage.getItem('navbar');
+        if(nav == null){
+            $("#nav-placeholder").load("navbar.html");
+        }
+        else{
+            $("#nav-placeholder").load(nav);
+        }
+        
+    });
+    </script>
+
+    <br>
+    <div id="diary" style="display:none;">
+		<div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title"><h2 style="color:white;">DIARY ENTRY</h2></div>
+                    <h5 style="color:white;">Journal down your day . . .</h5>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        <div id="diaryForm" style="background-color:white;padding:25px;">
+        <h3 id="date" style="text-align:center;">Current Date: </h3>
+        <h3 id="day" style="text-align:center;">Current Day: </h3>
+      <form>
+          <div class="form-group">
+            <br>
+        <div class="form-group">
+            <label for="date" style="color: black;">Diary Entry Date:</label> 
+            <label id="dateCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+            <br>
+            <input id="dateField" type="date" class="form-control custom-control" style="padding-left: 13px; color:rgb(136, 136, 136);">
+        </div>
+        <br>
+          <div class="form-group">
+            <label for="sleep" style="color: black;">How many hours have you slept for today?</label>
+            <label id="sleepCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+            <div class="form-inline flex-nowrap row form-group" style="width:100%;">
+              <input id="sleepField" type="number" placeholder="Enter a number between 0 to 24" class="form-control ml-3" id="sleep" min="0" max="24" style="width:80%;">
+            <label for="sleep" style="display:content;padding-left:5px;">Hours</label></div>
+          </div>
+          <br>
+          <label for="stress" style="color: black;">Stress Tracker</label>
+          <label id="stressCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+          <div class="form-inline row form-group-lg" style="margin-left: 1px;">
+              <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+                <input type="radio" id="relaxed" value="Relaxed" name="stress" class="custom-control-input">
+                <label class="custom-control-label" for="relaxed" style='font-size:15px;color:white;background-color:#62c5ff;padding:3px;font-weight:normal;'>Relaxed</label>
+              </div>
+              <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+                <input type="radio" id="good" value="Feeling Good" name="stress" class="custom-control-input">
+                <label class="custom-control-label" for="good" style='font-size:15px;color:white;background-color:#2dafff;padding:3px;font-weight:normal;'>Feeling Good</label>
+              </div>
+              <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+                <input type="radio" id="little" value="A Little Stress" name="stress" class="custom-control-input">
+                <label class="custom-control-label" for="little" style='font-size:15px;color:white;background-color:#0098f7;padding:3px;font-weight:normal;'>A Little Stress</label>
+              </div>
+              <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+                <input type="radio" id="normal" value="Stress" name="stress" class="custom-control-input">
+                <label class="custom-control-label" for="normal" style='font-size:15px;color:white;background-color:#3168b1;padding:3px;font-weight:normal;'>Stress</label>
+              </div>
+              <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+                <input type="radio" id="very" value="Very Stress" name="stress" class="custom-control-input">
+                <label class="custom-control-label" for="very" style='font-size:15px;color:white;background-color:darkblue;padding:3px;font-weight:normal;'>Very Stress</label>
+              </div>
+          </div>
+          <br><br>
+          <label for="stress" style="color: black;">Anxiety Tracker</label>
+          <label id="anxietyCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+          <div class="form-inline row form-group-lg" id="anxietyBox" style="margin-left: 1px;">
+            <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+              <input type="radio" id="calm" value="Calm" name="anxiety" class="custom-control-input">
+              <label class="custom-control-label" for="calm" style='font-size:15px;color:white;background-color:#ffaca1;padding:3px;font-weight:normal;'>Calm</label>
+            </div>
+            <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+              <input type="radio" id="neutral" value="Neutral" name="anxiety" class="custom-control-input">
+              <label class="custom-control-label" for="neutral" style='font-size:15px;color:white;background-color:#ff8b79;padding:3px;font-weight:normal;'>Neutral</label>
+            </div>
+            <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+              <input type="radio" id="cross" value="Cross" name="anxiety" class="custom-control-input">
+              <label class="custom-control-label" for="cross" style='font-size:15px;color:white;background-color:#fd6450;padding:3px;font-weight:normal;'>Cross</label>
+            </div>
+            <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+              <input type="radio" id="angry" value="Angry" name="anxiety" class="custom-control-input">
+              <label class="custom-control-label" for="angry" style='font-size:15px;color:white;background-color:#d12721;padding:3px;font-weight:normal;'>Angry</label>
+            </div>
+            <div class="col-md-2 m-1 custom-control custom-radio" style="display:inline-block;margin-right:10px;">
+              <input type="radio" id="furious" value="Furious" name="anxiety" class="custom-control-input">
+              <label class="custom-control-label" for="furious" style='font-size:15px;color:white;background-color:rgb(128, 0, 0);padding:3px;font-weight:normal;'>Furious</label>
+            </div>
+        </div>
+          <br>
+          <div class="form-group">
+          <label for="feelingSelect" style="color: black;">How are you feeling today? </label> <br>
+            <select class="custom-select" id="feelingSelect" style="width:100%;">
+            <option selected value="Positive">Positive</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Negative">Negative</option>
+            </select> 
+        </div>
+        <br>
+             <div class="form-group">
+              <label for="mood" style="color: black;">A word to represent your day...</label>
+              <label id="moodCheck" style="float:right;font-weight:bold;color:red;display:none;"> *Required</label>
+              <input type="text" placeholder="Sad / Happy / Depressed / Excited . . ." class="form-control" id="moodField">
+            </div>
+        <br>
+            <label for="thoughts" style="color: black;">(Optional) Pen down your thoughts...</label>
+            <textarea placeholder="How's your day ? 😊" class="form-control" id="thoughtsField" rows="5"></textarea>
+            <br><br>
+
+            <button onclick="submitEntry()" type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="top" data-content="Your diary entry is saved! Click on the buttons below for some good music or soul-filling podcasts." style="width:100%;">SAVE MY DIARY</button>
+          </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>
+
+<!-- Script -->
+<script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+<script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+<script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+<script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="js/scripts.js"></script> <!-- Custom scripts -->
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="js/database.js"></script>
+<script src="js/diaryEntry.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="js/database.js"></script>
+
+

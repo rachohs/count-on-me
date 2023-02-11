@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Website Title -->
+    <title>Count On Me - View My Diary</title>
+    <link rel="icon" href="images/hand_heart.png">
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	  <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+</head>
+
+<body>
+ <!-- navbar -->
+ <div id="nav-placeholder"></div>
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script>
+     $(function(){
+            const nav = sessionStorage.getItem('navbar');
+            if(nav == null){
+                $("#nav-placeholder").load("navbar.html");
+            }
+            else{
+                $("#nav-placeholder").load(nav);
+            }
+           
+        });
+ </script>
+    <!-- Diary Stats-->
+    <br>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Delete Diary Entry?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modal">
+             This diary entry will be permanentaly deleted from your account
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger deleteEntry" onclick="deleteDiary(this)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter">
+		<div class="container">
+      <h3 style="text-align:center;" id="diaryTitle"></h3>
+      <div class="row">
+      <div class="col-12 rounded" style="background:white;border:1px solid lightgray;">
+        <div class="content w-100">
+          <div class="calendar-container" style="overflow-y: scroll;">
+            <div class="calendar"> 
+              <div class="year-header"> 
+                <span class="left-button fa fa-chevron-left" id="prev"> </span> 
+                <span class="year" id="label"></span> 
+                <span class="right-button fa fa-chevron-right" id="next"> </span>
+              </div> 
+              <table class="months-table w-100"> 
+                <tbody>
+                  <tr class="months-row">
+                    <td class="month">Jan</td> 
+                    <td class="month">Feb</td> 
+                    <td class="month">Mar</td> 
+                    <td class="month">Apr</td> 
+                    <td class="month">May</td> 
+                    <td class="month">Jun</td> 
+                    <td class="month">Jul</td>
+                    <td class="month">Aug</td> 
+                    <td class="month">Sep</td> 
+                    <td class="month">Oct</td>          
+                    <td class="month">Nov</td>
+                    <td class="month">Dec</td>
+                  </tr>
+                </tbody>
+              </table> 
+              
+              <table class="days-table w-100"> 
+                <td class="day">Sun</td> 
+                <td class="day">Mon</td> 
+                <td class="day">Tue</td> 
+                <td class="day">Wed</td> 
+                <td class="day">Thu</td> 
+                <td class="day">Fri</td> 
+                <td class="day">Sat</td>
+              </table> 
+              <div class="frame"> 
+                <table class="dates-table w-100"> 
+                  <tbody class="tbody">             
+                  </tbody> 
+                </table>
+              </div> 
+            </div>
+          </div>
+          <div class="events-container">
+            <br>
+          </div>
+        </div>
+      </div>
+  </div>
+  <br><br><br>
+      <h3 style="text-align:center;" class="showStats">Overview</h3>
+      <div class="row showStats">
+      <div class="col-md-4">
+        <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #42a371 !important;border:1px solid #42a371;">
+        <p>I feel <span style="color:#42a371;font-weight: bold !important;">Positive</span><span id="positiveDays"></span></p>
+        <div id="positivePercent" style="min-width: 100px;min-height: 100px;"></div> 
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #afb1ae !important;border:1px solid #afb1ae;">
+      <p>I feel <span style="color:#afb1ae;font-weight:bold!important;">Neutral</span><span id="neutralDays"></span></p>
+      <div id="neutralPercent" style="min-width: 100px;min-height: 100px;"></div> 
+      </div>
+  </div>
+  <div class="col-md-4">
+    <div class="col-12 rounded d-inline-flex p-2" style="border-left:5px solid #f7533b !important;border:1px solid #f7533b;">
+    <p>I feel <span style="color:#f7533b;font-weight: bold!important;">Negative</span><span id="negativeDays"></span></p>
+    <div id="negativePercent" style="min-width: 100px;min-height: 100px;"></div>
+    </div> 
+</div>
+  </div>
+  <br><br><br>
+  <h3 style="text-align:center;" class="showStats">Your Feelings</h3>
+   <div class="col-12 showStats" style="border: 1px dashed rgb(145, 145, 145); border-radius: 20px;">
+    <div id="wordCloud" style="margin:0 auto;"></div>
+  </div>
+  <br><br><br>
+  <div class="col-12 showStats">
+    <div class="row">
+  <div class="col-6 rounded">
+    <h3 style="text-align:center;">Stress Tracker</h3>
+   <div id="stressTracker" style="max-width:280px;margin-right:auto;margin-left: auto;"></div>
+ </div>
+ <div class="col-6 rounded" style="border-left:1px solid lightgray;">
+  <h3 style="text-align:center;">Anxiety Tracker</h3>
+  <div id="anxietyTracker"  style="max-width:280px;margin-right:auto;margin-left: auto;"></div>
+</div>
+<br><br><br>
+<h3 style="text-align:center;margin:0 auto;">Sleep Tracker</h3>
+<div class="col-12" style="border: 1px dashed rgb(145, 145, 145); border-radius: 20px;">
+  <div id="sleepTracker" style="margin:0 auto;"></div>
+</div>
+</div>
+</div>
+</div>
+		    </div>
+        </div>    
+    </div>
+    </body>
+    </html>
+
+
+<!-- Script -->
+<script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+<script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+<script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+<script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+<script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+<script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+<script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+<script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+<script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+<script src="js/scripts.js"></script> <!-- Custom scripts -->
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> jquery -->    
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/diaryCalendar.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> -->
+<script src="//code.highcharts.com/highcharts.js"></script>
+<script src="//code.highcharts.com/modules/exporting.js"></script>
+<script src="//code.highcharts.com/modules/wordcloud.js"></script>
+<script src="//code.highcharts.com/modules/pattern-fill.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/database.js"></script>
+<script src="js/diaryStats.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.memory.js"></script>
+<!-- Don't change the format for any other products. -->
+<script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+<script src="js/database.js"></script>
+<script src="js/login.js"></script>  
